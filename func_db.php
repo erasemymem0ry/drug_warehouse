@@ -50,7 +50,6 @@ function deleteDrugsRow($id)
     }
 
     closeDB();
-    header("Location: .");
 }
 
 ?>

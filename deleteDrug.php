@@ -1,4 +1,8 @@
 <?php
 include 'func_db.php';
-deleteDrugsRow($_GET['id']);
+$isDeleted = deleteDrugsRow($_GET['id']);
 header("Location: .");
+
+if(!$isDeleted) {
+  echo "<script>alert('Ошибка при удалении')</script>";
+}

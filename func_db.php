@@ -47,11 +47,10 @@ function deleteDrugsRow($id)
         $isDeleted = mysqli_query($link, "DELETE FROM drugs WHERE drug_id = $id");
     } catch (Exception $e) {
         die("Ошибка: " . $e->getMessage());
-    }
-
-    closeDB();
-
-    return $isDeleted;
+    } finally {
+        closeDB();
+        return $isDeleted;
+    } 
 }
 
 ?>

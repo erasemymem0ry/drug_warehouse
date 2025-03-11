@@ -50,7 +50,29 @@ function deleteDrugsRow($id)
     } finally {
         closeDB();
         return $isDeleted;
-    } 
+    }
+}
+
+function addDrug($name, $manufacturer, $purpose, $category, $unit_of_measurement, $purchase_price, $selling_price)
+{
+    global $link;
+    openDB();
+
+    try {
+        mysqli_query($link, "
+        INSERT INTO drugs SET
+        name = '$name',
+        manufacturer = '$manufacturer',
+        purpose = '$purpose',
+        category = '$category',
+        unit_of_measurement = '$unit_of_measurement',
+        purchase_price = '$purchase_price',
+        selling_price = '$selling_price'
+        ");
+    } catch (Exception $e) {
+        die("Ошибка: " . $e->getMessage());
+    }
+    closeDB();
 }
 
 ?>

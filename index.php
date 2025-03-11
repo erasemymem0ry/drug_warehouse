@@ -16,7 +16,8 @@ $drugsRow = getDrugsRow(4);
     <title>Лекарства</title>
 </head>
 
-<body>
+<body style="margin:10px;">
+    <a href="addDrugPage.php">Добавить лекарство</a>
     <h1>Лекарства</h1>
     <table class="table">
         <th>ID</th>
@@ -38,7 +39,6 @@ $drugsRow = getDrugsRow(4);
         }
 
         ?>
-
     </table class="table">
     <h1>Лекарство</h1>
     <table>

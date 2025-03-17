@@ -62,7 +62,7 @@ function addDrug($name, $manufacturer, $purpose, $category, $unit_of_measurement
         mysqli_query($link, "
         INSERT INTO drugs SET
         name = '$name',
-        manufacturer = '$manufacturer',
+        manufacturer_id = '$manufacturer',
         purpose = '$purpose',
         category = '$category',
         unit_of_measurement = '$unit_of_measurement',
@@ -75,4 +75,27 @@ function addDrug($name, $manufacturer, $purpose, $category, $unit_of_measurement
     closeDB();
 }
 
+function getManufacturer($id)
+{
+    global $link;
+    openDB();
+
+    $result = mysqli_query($link, "SELECT name FROM manufacturer WHERE id = $id");
+
+    closeDB();
+    return mysqli_fetch_row($result);
+
+}
+
+function getManufacturers()
+{
+    global $link;
+    openDB();
+
+    $result = mysqli_query($link, "SELECT * FROM manufacturer");
+
+    closeDB();
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+}
 ?>

@@ -1,3 +1,7 @@
+<?php
+include 'func_db.php';
+$manufacturers = getManufacturers();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +22,19 @@
 <body>
     <form action="addDrug.php" method="post">
         <div><label for="name">Название: </label><input type="text" name="name"></div>
-        <div><label for="manufacturer">Производитель: </label><input type="text" name="manufacturer"></div>
+        <div><label for="manufacturer">Производитель: </label>
+            <select name="manufacturer">
+                <?php
+                foreach ($manufacturers as $m) {
+                    $key = $m['id'];
+                    $val = $m['name'];
+                    echo "<option value='$key'>$val</option>";
+                }
+
+                ?>
+            </select>
+
+        </div>
         <div><label for="purpose">Назначение: </label><input type="text" name="purpose"></div>
         <div><label for="category">Категория: </label><input type="text" name="category"></div>
         <div><label for="unit_of_measurement">Ед. измерения: </label><input type="text" name="unit_of_measurement">

@@ -30,7 +30,9 @@ $drugsRow = getDrugsRow(4);
         <th>Реализационная стоимость</th>
         <?php foreach ($drugsTable as $row) {
             echo "<tr>";
-            foreach ($row as $val) {
+            foreach ($row as $key => $val) {
+                if ($key == 'manufacturer_id')
+                    $val = getManufacturer($val)[0];
                 echo "<td>$val</td>";
             }
             $drugID = $row['drug_id'];
